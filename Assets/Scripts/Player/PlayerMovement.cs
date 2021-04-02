@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
 
     private float _horizontalInput;
     private float _verticalInput;
+    private Vector3 _horizontalVelocity;
+    private Vector3 _verticalVelocity;
     private float _mouseX;
     private float _mouseY;
 
@@ -39,7 +41,11 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        _playerRigidbody.velocity = new Vector3(_horizontalInput * _speed, _playerRigidbody.velocity.y, _verticalInput * _speed);
+        _horizontalVelocity = transform.right * _speed * _horizontalInput;
+        _verticalVelocity = transform.forward * _speed * _verticalInput;
+        //_playerRigidbody.velocity = new Vector3(_horizontalInput * _speed, _playerRigidbody.velocity.y, _verticalInput * _speed);
+
+        _playerRigidbody.velocity =_verticalVelocity + _horizontalVelocity;
     }
 
     private void Rotate()
