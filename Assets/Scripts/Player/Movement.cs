@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class Movement : MonoBehaviour
 {
     [SerializeField] 
     private float _speed = 1;
@@ -43,7 +41,6 @@ public class PlayerMovement : MonoBehaviour
     {
         _horizontalVelocity = transform.right * _speed * _horizontalInput;
         _verticalVelocity = transform.forward * _speed * _verticalInput;
-        //_playerRigidbody.velocity = new Vector3(_horizontalInput * _speed, _playerRigidbody.velocity.y, _verticalInput * _speed);
 
         _playerRigidbody.velocity =_verticalVelocity + _horizontalVelocity;
     }
