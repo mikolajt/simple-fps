@@ -2,16 +2,18 @@ using UnityEngine;
 
 public class AssaultRifle
 {
-    public void Shoot(float shootingFrequency, float time = 0f)
+    private float _time = 0f;
+
+    public void Shoot(float shootingFrequency)
     {
-        if (Input.GetKey(KeyCode.Mouse0) && time <= 0)
+        if (Input.GetKey(KeyCode.Mouse0) && _time <= 0)
         {
             Debug.Log("Fire");
-            time = shootingFrequency;
+            _time = shootingFrequency;
         }
-        else if(Input.GetKey(KeyCode.Mouse0) && time > 0 || !Input.GetKey(KeyCode.Mouse0) && time > 0)
+        else if(Input.GetKey(KeyCode.Mouse0) && _time > 0 || !Input.GetKey(KeyCode.Mouse0) && _time > 0)
         {
-            time -= Time.deltaTime;
+            _time -= Time.deltaTime;
         }
     }
 }
