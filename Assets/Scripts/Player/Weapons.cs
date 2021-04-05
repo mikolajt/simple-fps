@@ -6,18 +6,17 @@ public class Weapons : MonoBehaviour
 
     [SerializeField]
     private GameObject[] _weapons;
+    [SerializeField]
+    private GameObject _bulletPrefab;
 
-    private Handgun _handgun;
-    private AssaultRifle _assaultRifle;
+    private Handgun _handgun = new Handgun();
+    private AssaultRifle _assaultRifle = new AssaultRifle();
 
     [SerializeField]
     private float _assaultRifleShootingFrequency = 0.1f;
 
     void Start()
     {
-        _handgun = new Handgun();
-        _assaultRifle = new AssaultRifle();
-
         _weapons[0].SetActive(true);
         _weapons[1].SetActive(false);
     }
@@ -32,11 +31,11 @@ public class Weapons : MonoBehaviour
     {
         if(_activeWeapon == 0)
         {
-            _handgun.Shoot();
+            _handgun.Shoot(_bulletPrefab, 0f);
         }
         if(_activeWeapon == 1)
         {
-            _assaultRifle.Shoot(_assaultRifleShootingFrequency);
+            _assaultRifle.Shoot(_bulletPrefab, _assaultRifleShootingFrequency);
         }
     }
 

@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Handgun
+public class Handgun : Gun
 {
-    public void Shoot()
+    public override void Shoot(GameObject bulletPrefab, float shootingFrequency)
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Debug.Log("Fire");
+            GenerateBulllet(bulletPrefab);
         }
     }
 }

@@ -597,6 +597,8 @@ MonoBehaviour:
   _weapons:
   - {fileID: 5258594702352025920}
   - {fileID: 9007111554158812594}
+  _bulletPrefab: {fileID: 1564031186870167289, guid: 01d6c031147eba147b04751903e43ce1,
+    type: 3}
   _assaultRifleShootingFrequency: 0.1
 --- !u!1 &791595056
 GameObject:
