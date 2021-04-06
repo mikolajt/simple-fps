@@ -3,20 +3,26 @@ using UnityEngine;
 public class Weapons : MonoBehaviour
 {
     private int _activeWeapon = 0;
-
     [SerializeField]
     private GameObject[] _weapons;
     [SerializeField]
     private GameObject _bulletPrefab;
 
-    private Handgun _handgun = new Handgun();
-    private AssaultRifle _assaultRifle = new AssaultRifle();
+    private Handgun _handgun;
+    private AssaultRifle _assaultRifle;
+    [SerializeField]
+    private float _handgunDamage = 30f;
+    [SerializeField]
+    private float _assaultRifleDamage = 20f;
 
     [SerializeField]
     private float _assaultRifleShootingFrequency = 0.1f;
 
     void Start()
     {
+        _handgun = new Handgun(_handgunDamage);
+        _assaultRifle = new AssaultRifle(_assaultRifleDamage);
+
         _weapons[0].SetActive(true);
         _weapons[1].SetActive(false);
     }

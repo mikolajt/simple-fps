@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class AssaultRifle : Gun
 {
-    private float _time = 0f;
+    private float _time;
+
+    public AssaultRifle(float damage) : base(damage)
+    {
+        _time = 0f;
+    }
 
     public override void Shoot(GameObject bulletPrefab, GameObject weapon, float shootingFrequency)
     {

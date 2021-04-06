@@ -12,6 +12,8 @@ public class Bullet : MonoBehaviour
 
     private Rigidbody _bulletRigidbody;
 
+    public float damage;
+
     void Start()
     {
         _lifeTimer = _lifespan;
@@ -28,8 +30,11 @@ public class Bullet : MonoBehaviour
     {
         if(other.gameObject.layer == 6)
         {
-            Debug.Log("Bum");
             Destroy(gameObject);
+        }
+        if(other.gameObject.layer == 7)
+        {
+            other.gameObject.GetComponent<Enemy>().health -= damage;
         }
     }
 
