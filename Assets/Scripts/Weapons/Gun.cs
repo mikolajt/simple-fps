@@ -2,16 +2,14 @@ using UnityEngine;
 
 public abstract class Gun 
 {
-    public virtual void Shoot(GameObject bulletPrefab, float shootingFrequency)
-    {
+    public abstract void Shoot(GameObject bulletPrefab, GameObject weapon, float shootingFrequency);
 
-    }
 
-    protected void GenerateBulllet(GameObject bulletPrefab)
+    protected void GenerateBulllet(GameObject bulletPrefab, GameObject weapon)
     {
         GameObject bulletObject = GameObject.Instantiate(bulletPrefab);
-        bulletObject.transform.position = Camera.main.transform.position + Camera.main.transform.forward;
+        bulletObject.transform.position = weapon.transform.position + weapon.transform.forward;
 
-        bulletObject.transform.eulerAngles = new Vector3 (Camera.main.transform.eulerAngles.x + 90, Camera.main.transform.eulerAngles.y, Camera.main.transform.eulerAngles.z);
+        bulletObject.transform.eulerAngles = new Vector3 (weapon.transform.eulerAngles.x + 90, weapon.transform.eulerAngles.y, weapon.transform.eulerAngles.z);
     }
 }

@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Handgun : Gun
 {
-    public override void Shoot(GameObject bulletPrefab, float shootingFrequency)
+    public override void Shoot(GameObject bulletPrefab, GameObject weapon, float shootingFrequency)
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            GenerateBulllet(bulletPrefab);
+            GenerateBulllet(bulletPrefab, weapon);
         }
     }
 }

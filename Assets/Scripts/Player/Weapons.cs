@@ -31,11 +31,11 @@ public class Weapons : MonoBehaviour
     {
         if(_activeWeapon == 0)
         {
-            _handgun.Shoot(_bulletPrefab, 0f);
+            _handgun.Shoot(_bulletPrefab, _weapons[0], 0f);
         }
         if(_activeWeapon == 1)
         {
-            _assaultRifle.Shoot(_bulletPrefab, _assaultRifleShootingFrequency);
+            _assaultRifle.Shoot(_bulletPrefab, _weapons[1], _assaultRifleShootingFrequency);
         }
     }
 

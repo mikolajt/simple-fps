@@ -28,13 +28,10 @@ public class Movement : MonoBehaviour
         GetVerticalInput();
         GetMouseInput();
 
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
-    private void FixedUpdate()
-    {
         Move();
         Rotate();
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Move()
