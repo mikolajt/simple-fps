@@ -36,6 +36,10 @@ public class Bullet : MonoBehaviour
         {
             other.gameObject.GetComponent<Enemy>().health -= damage;
         }
+        if (other.gameObject.layer == 8)
+        {
+            other.gameObject.GetComponent<Health>().actualHealth -= damage;
+        }
     }
 
     private void Flight()
