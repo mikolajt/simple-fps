@@ -16,10 +16,18 @@ public class Movement : MonoBehaviour
     private float _mouseX;
     private float _mouseY;
 
+    private Animator _assasultRifleAnimator;
+    private Animator _handgunAnimator;
+
+    private int _moveSpeedHash = Animator.StringToHash("MoveSpeed");
+
 
     void Start()
     {
         _playerRigidbody = GetComponent<Rigidbody>();
+
+        _handgunAnimator = transform.GetChild(0).GetComponent<Animator>();
+        _assasultRifleAnimator = transform.GetChild(1).GetComponent<Animator>();
     }
 
     void Update()
@@ -39,7 +47,10 @@ public class Movement : MonoBehaviour
         _horizontalVelocity = transform.right * _speed * _horizontalInput;
         _verticalVelocity = transform.forward * _speed * _verticalInput;
 
-        _playerRigidbody.velocity =_verticalVelocity + _horizontalVelocity;
+        _playerRigidbody.velocity = _verticalVelocity + _horizontalVelocity;
+
+        _handgunAnimator.SetFloat(_moveSpeedHash, _horizontalInput * _speed + _verticalInput * _speed);
+        _assasultRifleAnimator.SetFloat(_moveSpeedHash, _horizontalInput * _speed + _verticalInput * _speed);
     }
 
     private void Rotate()

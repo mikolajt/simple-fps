@@ -1368,7 +1368,7 @@ GameObject:
   - component: {fileID: 6784163148990697939}
   - component: {fileID: 6784163148983451199}
   m_Layer: 0
-  m_Name: arms_assault_rifle_01
+  m_Name: AssasultRifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1400,7 +1400,7 @@ Animator:
   m_GameObject: {fileID: 6784163148990860787}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 182b7f11db452bc458d35a6c9eced06f, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8cfdb96fed028994f92206778d833c84, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

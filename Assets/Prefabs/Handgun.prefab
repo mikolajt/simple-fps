@@ -496,7 +496,7 @@ GameObject:
   - component: {fileID: 1871164208886139067}
   - component: {fileID: 1871164208893372247}
   m_Layer: 0
-  m_Name: arms_handgun_01
+  m_Name: Handgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -528,7 +528,7 @@ Animator:
   m_GameObject: {fileID: 1871164208885978267}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 56ec0b9a5b8762642811ea26a5242e04, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eb4d1a611de611a4a9595cf30906f0aa, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

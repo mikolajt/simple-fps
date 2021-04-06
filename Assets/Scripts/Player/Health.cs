@@ -21,7 +21,6 @@ public class Health : MonoBehaviour
 
     private void CheckIfAlive()
     {
-        Debug.Log(actualHealth);
         if (actualHealth <= 0)
         {
             Destroy(gameObject);

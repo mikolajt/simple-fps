@@ -4,9 +4,15 @@ public abstract class Gun
 {
     private float _damage;
 
-    public Gun(float damage)
+    protected Animator _animator;
+    protected int _shootHash;
+
+    public Gun(float damage, Animator animator)
     {
         _damage = damage;
+
+        _animator = animator;
+        _shootHash = Animator.StringToHash("Shoot");
     }
 
     public abstract void Shoot(GameObject bulletPrefab, GameObject weapon, float shootingFrequency);

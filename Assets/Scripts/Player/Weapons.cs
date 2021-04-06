@@ -18,10 +18,16 @@ public class Weapons : MonoBehaviour
     [SerializeField]
     private float _assaultRifleShootingFrequency = 0.1f;
 
+    private Animator _assasultRifleAnimator;
+    private Animator _handgunAnimator;
+
     void Start()
     {
-        _handgun = new Handgun(_handgunDamage);
-        _assaultRifle = new AssaultRifle(_assaultRifleDamage);
+        _handgunAnimator = transform.GetChild(0).GetComponent<Animator>();
+        _assasultRifleAnimator = transform.GetChild(1).GetComponent<Animator>();
+
+        _handgun = new Handgun(_handgunDamage, _handgunAnimator);
+        _assaultRifle = new AssaultRifle(_assaultRifleDamage, _assasultRifleAnimator);
 
         _weapons[0].SetActive(true);
         _weapons[1].SetActive(false);
