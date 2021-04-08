@@ -4,13 +4,12 @@ public class Robot : Enemy
 {
     [SerializeField]
     private GameObject _bulletPrefab;
+    [SerializeField]
+    private GameObject _bulletSpawn;
 
     protected override void Attack()
     {
-        GameObject bulletObject = GameObject.Instantiate(_bulletPrefab);
-
-        bulletObject.transform.position = transform.position + transform.forward;
-        bulletObject.transform.eulerAngles = new Vector3(transform.eulerAngles.x + 90, transform.eulerAngles.y, transform.eulerAngles.z);
+        GameObject bulletObject = GameObject.Instantiate(_bulletPrefab, _bulletSpawn.transform.position, _bulletSpawn.transform.rotation);
 
         bulletObject.GetComponent<Bullet>().damage = _damage;
     }
