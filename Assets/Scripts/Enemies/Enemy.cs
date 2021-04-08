@@ -17,6 +17,8 @@ public abstract class Enemy : MonoBehaviour
     private float _sightRange = 10f;
     [SerializeField]
     private float _attackRange = 1f;
+    [SerializeField]
+    private float _moveSpeed = 1f;
     private bool _isPlayerInSightRange;
     private bool _isPlayerInAttackRange;
 
@@ -32,9 +34,16 @@ public abstract class Enemy : MonoBehaviour
     protected float _damage = 10f;
 
     public float health;
+
+    private Animator _enemyAnimator;
+    private int _isMovingHash = Animator.StringToHash("isMoving");
+
     void Start()
     {
         _enemyNavMeshAgent = GetComponent<NavMeshAgent>();
+        _enemyAnimator = GetComponent<Animator>();
+
+        _enemyNavMeshAgent.speed = _moveSpeed;
     }
 
     void Update()
@@ -91,10 +100,12 @@ public abstract class Enemy : MonoBehaviour
             _enemyNavMeshAgent.SetDestination(_patrolPoint);
 
             Vector3 distanceToPatrolPoint = transform.position - _patrolPoint;
+            _enemyAnimator.SetBool(_isMovingHash, true);
 
             if(distanceToPatrolPoint.magnitude < 1f)
             {
                 _isPatrolPoinSet = false;
+                _enemyAnimator.SetBool(_isMovingHash, false);
             }
         }
     }

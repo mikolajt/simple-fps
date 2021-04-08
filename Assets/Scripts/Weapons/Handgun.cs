@@ -8,11 +8,11 @@ public class Handgun : Gun
     {
         
     }
-    public override void Shoot(GameObject bulletPrefab, GameObject weapon, float shootingFrequency)
+    public override void Shoot(GameObject bulletPrefab, GameObject bulletSpawn, float shootingFrequency)
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            GenerateBulllet(bulletPrefab, weapon);
+            GenerateBulllet(bulletPrefab, bulletSpawn);
 
             _animator.SetTrigger(_shootHash);
         }

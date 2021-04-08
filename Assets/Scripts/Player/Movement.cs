@@ -61,8 +61,6 @@ public class Movement : MonoBehaviour
         playerRotation.y += _mouseX * _rotationSensivity;
         playerRotation.z = 0;
 
-
-
         _playerRigidbody.rotation = Quaternion.Euler(playerRotation);
     }
 

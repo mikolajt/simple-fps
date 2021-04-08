@@ -9,11 +9,11 @@ public class AssaultRifle : Gun
         _time = 0f;
     }
 
-    public override void Shoot(GameObject bulletPrefab, GameObject weapon, float shootingFrequency)
+    public override void Shoot(GameObject bulletPrefab, GameObject bulletSpawn, float shootingFrequency)
     {
         if (Input.GetKey(KeyCode.Mouse0) && _time <= 0)
         {
-            GenerateBulllet(bulletPrefab, weapon);
+            GenerateBulllet(bulletPrefab, bulletSpawn);
             _time = shootingFrequency;
 
             _animator.SetTrigger(_shootHash);

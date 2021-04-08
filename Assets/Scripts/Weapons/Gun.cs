@@ -15,15 +15,12 @@ public abstract class Gun
         _shootHash = Animator.StringToHash("Shoot");
     }
 
-    public abstract void Shoot(GameObject bulletPrefab, GameObject weapon, float shootingFrequency);
+    public abstract void Shoot(GameObject bulletPrefab, GameObject bulletSpawn, float shootingFrequency);
 
 
-    protected void GenerateBulllet(GameObject bulletPrefab, GameObject weapon)
+    protected void GenerateBulllet(GameObject bulletPrefab, GameObject bulletSpawn)
     {
-        GameObject bulletObject = GameObject.Instantiate(bulletPrefab);
-
-        bulletObject.transform.position = weapon.transform.position + weapon.transform.forward;
-        bulletObject.transform.eulerAngles = new Vector3 (weapon.transform.eulerAngles.x + 90, weapon.transform.eulerAngles.y, weapon.transform.eulerAngles.z);
+        GameObject bulletObject = GameObject.Instantiate(bulletPrefab, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
 
         bulletObject.GetComponent<Bullet>().damage = _damage;
     }

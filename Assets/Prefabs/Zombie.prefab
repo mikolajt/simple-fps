@@ -2939,7 +2939,7 @@ GameObject:
   - component: {fileID: 4421046561228072143}
   - component: {fileID: -1395918755318609210}
   m_Layer: 7
-  m_Name: Zombie1
+  m_Name: Zombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2982,9 +2982,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8870025034968824284}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 8f7380da49034cd488ddff94b1ac35d1, type: 3}
-  m_Controller: {fileID: 9100000, guid: 2ef8e6599b7f9934e8ff0d64c5325a1f, type: 2}
+  m_Controller: {fileID: 9100000, guid: 95b4680ab8a9cc747a336c3bfbcb6eb0, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -3027,9 +3027,10 @@ MonoBehaviour:
     m_Bits: 64
   _playerGameObject: {fileID: 4660912335468440389, guid: 888052d204f271744ac14a0913cee447,
     type: 3}
-  _sightRange: 10
+  _sightRange: 15
   _attackRange: 2
-  _patrolRange: 15
+  _moveSpeed: 1
+  _patrolRange: 10
   _attackSpeed: 3
   _damage: 10
   health: 100
