@@ -36,7 +36,7 @@ public class GrenadeThrower : Gun
             grenadeObject.GetComponent<Grenade>().damage = _damage;
         }
 
-        grenadeRigidbody.AddForce((grenadeObject.transform.forward + grenadeObject.transform.up) * _throwForce, ForceMode.VelocityChange);
+        grenadeRigidbody.AddForce(grenadeObject.transform.forward * _throwForce + grenadeObject.transform.up * _throwForce/2, ForceMode.VelocityChange);
 
     }
 }
