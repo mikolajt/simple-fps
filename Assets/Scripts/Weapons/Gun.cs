@@ -2,7 +2,7 @@ using UnityEngine;
 
 public abstract class Gun 
 {
-    private float _damage;
+    protected float _damage;
 
     protected Animator _animator;
     protected int _shootHash;
@@ -15,13 +15,16 @@ public abstract class Gun
         _shootHash = Animator.StringToHash("Shoot");
     }
 
-    public abstract void Shoot(GameObject bulletPrefab, GameObject bulletSpawn, float shootingFrequency);
+    public abstract void Shoot(GameObject projectilePrefab, GameObject projectileSpawn, float shootingFrequency);
 
 
-    protected void GenerateBulllet(GameObject bulletPrefab, GameObject bulletSpawn)
+    protected void GenerateBulllet(GameObject projectilePrefab, GameObject projectileSpawn)
     {
-        GameObject bulletObject = GameObject.Instantiate(bulletPrefab, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
+        GameObject projectileObject = GameObject.Instantiate(projectilePrefab, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
 
-        bulletObject.GetComponent<Bullet>().damage = _damage;
+        if (projectileObject.GetComponent<Bullet>())
+        {
+            projectileObject.GetComponent<Bullet>().damage = _damage;
+        }
     }
 }
