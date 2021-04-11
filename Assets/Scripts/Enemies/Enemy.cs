@@ -11,7 +11,7 @@ public abstract class Enemy : MonoBehaviour
     private LayerMask _arenaLayerMask;
 
     [SerializeField]
-    protected GameObject _playerGameObject;
+    public GameObject playerGameObject;
 
     [SerializeField]
     private float _sightRange = 10f;
@@ -132,7 +132,7 @@ public abstract class Enemy : MonoBehaviour
 
     private void ChasePlayer()
     {
-        _enemyNavMeshAgent.SetDestination(_playerGameObject.transform.position);
+        _enemyNavMeshAgent.SetDestination(playerGameObject.transform.position);
         _enemyAnimator.SetBool(_isMovingHash, true);
     }
 
@@ -141,7 +141,7 @@ public abstract class Enemy : MonoBehaviour
         _enemyAnimator.SetBool(_isMovingHash, false);
         _enemyNavMeshAgent.SetDestination(transform.position);
 
-        Vector3 lookTarget = new Vector3(_playerGameObject.transform.position.x, transform.position.y, _playerGameObject.transform.position.z);
+        Vector3 lookTarget = new Vector3(playerGameObject.transform.position.x, transform.position.y, playerGameObject.transform.position.z);
         transform.LookAt(lookTarget);
 
         if(_timeToNextAttack <= 0f)

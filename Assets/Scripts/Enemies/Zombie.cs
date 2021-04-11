@@ -4,7 +4,7 @@ public class Zombie : Enemy
     {
         if (_isPlayerInSightRange && _isPlayerInAttackRange)
         {
-            _playerGameObject.GetComponent<Health>().actualHealth -= _damage;
+            playerGameObject.GetComponent<Health>().actualHealth -= _damage;
         }
     }
 }

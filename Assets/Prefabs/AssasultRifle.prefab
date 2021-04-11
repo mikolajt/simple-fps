@@ -1699,7 +1699,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8034273793471033020}
-  - component: {fileID: 8548030429270620420}
   m_Layer: 0
   m_Name: BulletSpawn
   m_TagString: Untagged
@@ -1721,17 +1720,3 @@ Transform:
   m_Father: {fileID: 6784163148990697939}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!136 &8548030429270620420
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9118406867000098052}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.01
-  m_Height: 0.02407996
-  m_Direction: 0
-  m_Center: {x: 0.1056, y: -0.0128, z: 0.7148}

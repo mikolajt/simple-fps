@@ -1,4 +1,4 @@
-using UnityEngine;
+ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
@@ -15,9 +15,11 @@ public class Movement : MonoBehaviour
     private Vector3 _verticalVelocity;
     private float _mouseX;
     private float _mouseY;
+    private Vector3 _playerRotation;
 
-    private Animator _assasultRifleAnimator;
+    private Animator _assaultRifleAnimator;
     private Animator _handgunAnimator;
+    private Animator _granadeThrowerAnimator;
 
     private int _moveSpeedHash = Animator.StringToHash("MoveSpeed");
 
@@ -27,19 +29,23 @@ public class Movement : MonoBehaviour
         _playerRigidbody = GetComponent<Rigidbody>();
 
         _handgunAnimator = transform.GetChild(0).GetComponent<Animator>();
-        _assasultRifleAnimator = transform.GetChild(1).GetComponent<Animator>();
+        _assaultRifleAnimator = transform.GetChild(1).GetComponent<Animator>();
+        _granadeThrowerAnimator = transform.GetChild(2).GetComponent<Animator>();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void Update()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+
         GetHorizontalInput();
         GetVerticalInput();
         GetMouseInput();
 
         Move();
         Rotate();
-
-        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Move()
@@ -50,18 +56,28 @@ public class Movement : MonoBehaviour
         _playerRigidbody.velocity = _verticalVelocity + _horizontalVelocity;
 
         _handgunAnimator.SetFloat(_moveSpeedHash, _horizontalInput * _speed + _verticalInput * _speed);
-        _assasultRifleAnimator.SetFloat(_moveSpeedHash, _horizontalInput * _speed + _verticalInput * _speed);
+        _assaultRifleAnimator.SetFloat(_moveSpeedHash, _horizontalInput * _speed + _verticalInput * _speed);
+        _granadeThrowerAnimator.SetFloat(_moveSpeedHash, _horizontalInput * _speed + _verticalInput * _speed);
     }
 
     private void Rotate()
     {
-        Vector3 playerRotation = transform.rotation.eulerAngles;
+        _playerRotation = transform.rotation.eulerAngles;
 
-        playerRotation.x -= _mouseY * _rotationSensivity;
-        playerRotation.y += _mouseX * _rotationSensivity;
-        playerRotation.z = 0;
+        _playerRotation.x -= _mouseY * _rotationSensivity;
+        _playerRotation.y += _mouseX * _rotationSensivity;
+        _playerRotation.z = 0;
 
-        _playerRigidbody.rotation = Quaternion.Euler(playerRotation);
+        if (_playerRotation.x > 90 && _playerRotation.x < 180)
+        {
+            _playerRotation.x = 90;
+        }
+        else if(_playerRotation.x > 180 && _playerRotation.x < 270)
+        {
+            _playerRotation.x = 270;
+        }
+
+        _playerRigidbody.rotation = Quaternion.Euler(_playerRotation);
     }
 
     private void GetHorizontalInput()

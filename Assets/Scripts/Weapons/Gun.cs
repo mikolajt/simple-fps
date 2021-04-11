@@ -3,13 +3,15 @@ using UnityEngine;
 public abstract class Gun 
 {
     protected float _damage;
+    protected float _ammunition;
 
     protected Animator _animator;
     protected int _shootHash;
 
-    public Gun(float damage, Animator animator)
+    public Gun(float damage, float ammunition, Animator animator)
     {
         _damage = damage;
+        _ammunition = ammunition;
 
         _animator = animator;
         _shootHash = Animator.StringToHash("Shoot");

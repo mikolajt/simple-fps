@@ -17,7 +17,7 @@ public class Grenadier : Enemy
         if (grenadeObject.GetComponent<Grenade>())
         {
             grenadeObject.GetComponent<Grenade>().damage = _damage;
-            grenadeObject.GetComponent<Grenade>().source = "enemy";
+            grenadeObject.GetComponent<Grenade>().isFromGrenadier = true;
         }
 
         grenadeRigidbody.AddForce(grenadeObject.transform.forward * _throwForce + grenadeObject.transform.up * _throwForce / 2, ForceMode.VelocityChange);

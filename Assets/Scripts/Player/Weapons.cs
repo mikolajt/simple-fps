@@ -21,25 +21,31 @@ public class Weapons : MonoBehaviour
     private float _grenadeDamage = 50f;
     [SerializeField]
     private float _grenadeThrowForce = 10f;
+    [SerializeField]
+    private float _handgunBulletAmount = 30f;
+    [SerializeField]
+    private float _assaultRifleBulletAmount = 50f;
+    [SerializeField]
+    private float _grenadeAmount = 5f;
 
     [SerializeField]
     private float _assaultRifleShootingFrequency = 0.1f;
     [SerializeField]
     private float _grenadeThrowingFrequency = 2f;
 
-    private Animator _assasultRifleAnimator;
+    private Animator _assaultRifleAnimator;
     private Animator _handgunAnimator;
     private Animator _grenadeAnimator;
 
     void Start()
     {
         _handgunAnimator = transform.GetChild(0).GetComponent<Animator>();
-        _assasultRifleAnimator = transform.GetChild(1).GetComponent<Animator>();
+        _assaultRifleAnimator = transform.GetChild(1).GetComponent<Animator>();
         _grenadeAnimator = transform.GetChild(2).GetComponent<Animator>();
 
-        _handgun = new Handgun(_handgunDamage, _handgunAnimator);
-        _assaultRifle = new AssaultRifle(_assaultRifleDamage, _assasultRifleAnimator);
-        _grenadeThrower = new GrenadeThrower(_grenadeDamage, _grenadeThrowForce, _grenadeAnimator);
+        _handgun = new Handgun(_handgunDamage, _handgunBulletAmount, _handgunAnimator);
+        _assaultRifle = new AssaultRifle(_assaultRifleDamage, _assaultRifleBulletAmount, _assaultRifleAnimator);
+        _grenadeThrower = new GrenadeThrower(_grenadeDamage, _grenadeThrowForce, _grenadeAmount, _grenadeAnimator);
 
         _weapons[0].SetActive(true);
         _weapons[1].SetActive(false);

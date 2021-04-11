@@ -5,18 +5,19 @@ public class GrenadeThrower : Gun
     private float _throwForce;
     private float _time;
 
-    public GrenadeThrower(float damage, float throwForce, Animator animator) : base(damage, animator)
+    public GrenadeThrower(float damage, float throwForce, float ammunition, Animator animator) : base(damage, ammunition, animator)
     {
         _throwForce = throwForce;
         _time = 0f;
     }
     public override void Shoot(GameObject grenadePrefab, GameObject grenadeSpawn, float shootingFrequency)
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && _time <= 0)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && _time <= 0 && _ammunition > 0)
         {
             _time = shootingFrequency;
 
             ThrowGrenade(grenadePrefab, grenadeSpawn);
+            _ammunition--;
 
             _animator.SetTrigger(_shootHash);
         }
@@ -36,7 +37,7 @@ public class GrenadeThrower : Gun
             grenadeObject.GetComponent<Grenade>().damage = _damage;
         }
 
-        grenadeRigidbody.AddForce(grenadeObject.transform.forward * _throwForce + grenadeObject.transform.up * _throwForce/2, ForceMode.VelocityChange);
+        grenadeRigidbody.velocity = (grenadeObject.transform.forward * _throwForce + grenadeObject.transform.up * _throwForce / 2);
 
     }
 }

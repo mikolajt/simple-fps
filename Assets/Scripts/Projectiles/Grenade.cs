@@ -10,7 +10,7 @@ public class Grenade : MonoBehaviour
     private float _explosionRadius = 5f;
     public float damage;
 
-    public string source;
+    public bool isFromGrenadier = false;
 
     [SerializeField]
     private GameObject _explosionEffect;
@@ -47,7 +47,7 @@ public class Grenade : MonoBehaviour
 
         foreach(Collider collider in objectsAffectedByExoplosion)
         {
-            if ((collider.gameObject.layer == 7 || collider.gameObject.layer == 9) && source != "enemy")
+            if ((collider.gameObject.layer == 7 || collider.gameObject.layer == 9) && isFromGrenadier != true)
             {
                 collider.GetComponent<Enemy>().health -= damage;
             }

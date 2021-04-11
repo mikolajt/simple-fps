@@ -40,10 +40,6 @@ public class Bullet : MonoBehaviour
         {
             other.gameObject.GetComponent<Health>().actualHealth -= damage;
         }
-        if (other.gameObject.layer == 9)
-        {
-            other.gameObject.GetComponentInParent<Enemy>().health = 0;
-        }
     }
 
     private void Flight()
