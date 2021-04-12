@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Weapons : MonoBehaviour
 {
@@ -37,6 +38,11 @@ public class Weapons : MonoBehaviour
     private Animator _handgunAnimator;
     private Animator _grenadeAnimator;
 
+    [SerializeField]
+    private GameObject _ammoUI;
+    [SerializeField]
+    private Sprite[] _weaponsImages; 
+
     void Start()
     {
         _handgunAnimator = transform.GetChild(0).GetComponent<Animator>();
@@ -60,6 +66,8 @@ public class Weapons : MonoBehaviour
         _handgun.CheckDamageBoostTime();
         _assaultRifle.CheckDamageBoostTime();
         _grenadeThrower.CheckDamageBoostTime();
+
+        AmmunitionUI();
     }
 
     private void Shoot()
@@ -112,6 +120,25 @@ public class Weapons : MonoBehaviour
 
                 _activeWeapon = 2;
             }
+        }
+    }
+
+    private void AmmunitionUI()
+    {
+        if(_activeWeapon == 0)
+        {
+            _ammoUI.transform.GetChild(0).GetComponent<Text>().text = "Ammo: " + _handgun.GetAmmunition();
+            _ammoUI.transform.GetChild(1).GetComponent<Image>().sprite = _weaponsImages[0];
+        }
+        if (_activeWeapon == 1)
+        {
+            _ammoUI.transform.GetChild(0).GetComponent<Text>().text = "Ammo: " + _assaultRifle.GetAmmunition();
+            _ammoUI.transform.GetChild(1).GetComponent<Image>().sprite = _weaponsImages[1];
+        }
+        if (_activeWeapon == 2)
+        {
+            _ammoUI.transform.GetChild(0).GetComponent<Text>().text = "Ammo: " + _grenadeThrower.GetAmmunition();
+            _ammoUI.transform.GetChild(1).GetComponent<Image>().sprite = _weaponsImages[2];
         }
     }
 

@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
@@ -8,11 +7,24 @@ public class Health : MonoBehaviour
     private float _maxHealth = 100f;
     private float _actualHealth;
 
-    private float _armor = 0f;
+    public float _armor = 0f;
+    [SerializeField]
+    private float _currentArmor;
+
+    [SerializeField]
+    private Slider _healthBar;
+    [SerializeField]
+    private Slider _armorBar;
+    [SerializeField]
+    private GameObject _armorUI;
 
     void Start()
     {
         _actualHealth = _maxHealth;
+        _currentArmor = _armor;
+
+        _healthBar.value = CalculateHealth();
+        CheckIfArmorExists();
     }
 
     void Update()
@@ -28,6 +40,28 @@ public class Health : MonoBehaviour
         }
     }
 
+    private float CalculateHealth()
+    {
+        return _actualHealth / _maxHealth;
+    }
+
+    private float CalculateArmor()
+    {
+        return _currentArmor / _armor;
+    }
+
+    private void CheckIfArmorExists()
+    {
+        if(_armor <= 0)
+        {
+            _armorUI.SetActive(false);
+        }
+        else
+        {
+            _armorUI.SetActive(true);
+        }
+    }
+
     public void AddHealth(float health)
     {
         _actualHealth += health;
@@ -35,28 +69,40 @@ public class Health : MonoBehaviour
         {
             _actualHealth = _maxHealth;
         }
+        _healthBar.value = CalculateHealth();
     }
 
     public void SubstractHealth(float health)
     {
         _actualHealth -= health;
+        _healthBar.value = CalculateHealth();
+    }
+
+    public float GetArmor()
+    {
+        return _currentArmor;
     }
 
     public void SetArmor(float armor)
     {
         _armor = armor;
+        _currentArmor = _armor;
+        _armorBar.value = CalculateArmor();
+        CheckIfArmorExists();
     }
 
-    public float GetArmor()
-    {
-        return _armor;
-    }
     public void SubstractArmor(float armor)
     {
-        _armor -= armor;
-        if(_armor < 0)
+        _currentArmor -= armor;
+        if(_currentArmor < 0)
         {
+            _currentArmor = 0f;
             _armor = 0f;
         }
+        else
+        {
+            _armorBar.value = CalculateArmor();
+        }
+        CheckIfArmorExists();
     }
 }

@@ -39,15 +39,22 @@ public class Bullet : MonoBehaviour
         }
         if (other.gameObject.layer == 8)
         {
-            if(other.gameObject.GetComponent<Health>().GetArmor() > 0)
+            if (other.gameObject.GetComponent<Health>().GetArmor() > 0)
             {
-                other.gameObject.GetComponent<Health>().SubstractArmor(damage);
-                Destroy(gameObject);
+                if (damage > other.gameObject.GetComponent<Health>().GetArmor())
+                {
+                    float difference = damage - other.gameObject.GetComponent<Health>().GetArmor();
+                    other.gameObject.GetComponent<Health>().SubstractArmor(other.gameObject.GetComponent<Health>().GetArmor());
+                    other.gameObject.GetComponent<Health>().SubstractHealth(difference);
+                }
+                else
+                {
+                    other.gameObject.GetComponent<Health>().SubstractArmor(damage);
+                }
             }
             else
             {
                 other.gameObject.GetComponent<Health>().SubstractHealth(damage);
-                Destroy(gameObject);
             }
         }
     }

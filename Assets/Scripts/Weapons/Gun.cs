@@ -40,6 +40,11 @@ public abstract class Gun
         _ammunition += newAmmo;
     }
 
+    public float GetAmmunition()
+    {
+        return _ammunition;
+    }
+
     public void DamageBoost(float boost, float time)
     {
         _damageBoost = boost;

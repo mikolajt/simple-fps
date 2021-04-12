@@ -8,7 +8,16 @@ public class Zombie : Enemy
         {
             if (playerGameObject.GetComponent<Health>().GetArmor() > 0)
             {
-                playerGameObject.GetComponent<Health>().SubstractArmor(_damage);
+                if (_damage > playerGameObject.GetComponent<Health>().GetArmor())
+                {
+                    float difference = _damage - playerGameObject.GetComponent<Health>().GetArmor();
+                    playerGameObject.GetComponent<Health>().SubstractArmor(playerGameObject.GetComponent<Health>().GetArmor());
+                    playerGameObject.GetComponent<Health>().SubstractHealth(difference);
+                }
+                else
+                {
+                    playerGameObject.GetComponent<Health>().SubstractArmor(_damage);
+                }
             }
             else
             {
