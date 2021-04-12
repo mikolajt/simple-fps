@@ -13,4 +13,10 @@ public class Robot : Enemy
 
         bulletObject.GetComponent<Bullet>().damage = _damage;
     }
+
+    protected override void SpawnAmmo(GameObject ammoPowerUp, Vector3 spawnPoint)
+    {
+        GameObject ammo = GameObject.Instantiate(ammoPowerUp, spawnPoint, Quaternion.identity);
+        ammo.GetComponent<Ammo>().SetType(WeaponTypeEnum.AssaultRifle);
+    }
 }

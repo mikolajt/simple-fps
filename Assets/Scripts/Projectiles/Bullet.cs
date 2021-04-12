@@ -35,10 +35,20 @@ public class Bullet : MonoBehaviour
         if(other.gameObject.layer == 7)
         {
             other.gameObject.GetComponent<Enemy>().health -= damage;
+            Destroy(gameObject);
         }
         if (other.gameObject.layer == 8)
         {
-            other.gameObject.GetComponent<Health>().actualHealth -= damage;
+            if(other.gameObject.GetComponent<Health>().GetArmor() > 0)
+            {
+                other.gameObject.GetComponent<Health>().SubstractArmor(damage);
+                Destroy(gameObject);
+            }
+            else
+            {
+                other.gameObject.GetComponent<Health>().SubstractHealth(damage);
+                Destroy(gameObject);
+            }
         }
     }
 

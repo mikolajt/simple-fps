@@ -22,4 +22,10 @@ public class Grenadier : Enemy
 
         grenadeRigidbody.AddForce(grenadeObject.transform.forward * _throwForce + grenadeObject.transform.up * _throwForce / 2, ForceMode.VelocityChange);
     }
+
+    protected override void SpawnAmmo(GameObject ammoPowerUp, Vector3 spawnPoint)
+    {
+        GameObject ammo = GameObject.Instantiate(ammoPowerUp, spawnPoint, Quaternion.identity);
+        ammo.GetComponent<Ammo>().SetType(WeaponTypeEnum.Grenade);
+    }
 }

@@ -1,14 +1,15 @@
 using UnityEngine;
-
 public class GrenadeThrower : Gun
 {
     private float _throwForce;
     private float _time;
 
-    public GrenadeThrower(float damage, float throwForce, float ammunition, Animator animator) : base(damage, ammunition, animator)
+    public GrenadeThrower(float damage, float throwForce, int ammunition, Animator animator) : base(damage, ammunition, animator)
     {
         _throwForce = throwForce;
         _time = 0f;
+
+        Type = WeaponTypeEnum.Grenade;
     }
     public override void Shoot(GameObject grenadePrefab, GameObject grenadeSpawn, float shootingFrequency)
     {

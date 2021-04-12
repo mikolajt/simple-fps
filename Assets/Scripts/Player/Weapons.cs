@@ -22,11 +22,11 @@ public class Weapons : MonoBehaviour
     [SerializeField]
     private float _grenadeThrowForce = 10f;
     [SerializeField]
-    private float _handgunBulletAmount = 30f;
+    private int _handgunBulletAmount = 30;
     [SerializeField]
-    private float _assaultRifleBulletAmount = 50f;
+    private int _assaultRifleBulletAmount = 50;
     [SerializeField]
-    private float _grenadeAmount = 5f;
+    private int _grenadeAmount = 5;
 
     [SerializeField]
     private float _assaultRifleShootingFrequency = 0.1f;
@@ -56,6 +56,10 @@ public class Weapons : MonoBehaviour
     {
         Shoot();
         SwapWeapon();
+
+        _handgun.CheckDamageBoostTime();
+        _assaultRifle.CheckDamageBoostTime();
+        _grenadeThrower.CheckDamageBoostTime();
     }
 
     private void Shoot()
@@ -108,6 +112,26 @@ public class Weapons : MonoBehaviour
 
                 _activeWeapon = 2;
             }
+        }
+    }
+
+    public Gun GetWeapon(WeaponTypeEnum type)
+    {
+        if(type == WeaponTypeEnum.Handgun)
+        {
+            return _handgun;
+        }
+        else if(type == WeaponTypeEnum.AssaultRifle)
+        {
+            return _assaultRifle;
+        }
+        else if(type == WeaponTypeEnum.Grenade)
+        {
+            return _grenadeThrower;
+        }
+        else
+        {
+            return null;
         }
     }
 }

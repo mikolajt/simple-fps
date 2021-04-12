@@ -3,12 +3,17 @@ using UnityEngine;
 public abstract class Gun 
 {
     protected float _damage;
-    protected float _ammunition;
+    protected int _ammunition;
 
     protected Animator _animator;
     protected int _shootHash;
 
-    public Gun(float damage, float ammunition, Animator animator)
+    private float _damageBoost = 1f;
+    private float _damageBoostTime = 0f;
+
+    public WeaponTypeEnum Type { get; protected set; }
+
+    public Gun(float damage, int ammunition, Animator animator)
     {
         _damage = damage;
         _ammunition = ammunition;
@@ -26,7 +31,27 @@ public abstract class Gun
 
         if (projectileObject.GetComponent<Bullet>())
         {
-            projectileObject.GetComponent<Bullet>().damage = _damage;
+            projectileObject.GetComponent<Bullet>().damage = _damage * _damageBoost;
+        }
+    }
+
+    public void AddAmmunition(int newAmmo)
+    {
+        _ammunition += newAmmo;
+    }
+
+    public void DamageBoost(float boost, float time)
+    {
+        _damageBoost = boost;
+        _damageBoostTime = time;
+    }
+
+    public void CheckDamageBoostTime()
+    {
+        _damageBoostTime -= Time.deltaTime;
+        if (_damageBoostTime <= 0)
+        {
+            _damageBoost = 1f;
         }
     }
 }

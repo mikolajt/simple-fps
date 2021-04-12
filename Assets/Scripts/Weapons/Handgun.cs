@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Handgun : Gun
 {
-    public Handgun(float damage, float ammunition, Animator animator) : base(damage, ammunition, animator)
+    public Handgun(float damage, int ammunition, Animator animator) : base(damage, ammunition, animator)
     {
-        
+        Type = WeaponTypeEnum.Handgun;
     }
     public override void Shoot(GameObject bulletPrefab, GameObject bulletSpawn, float shootingFrequency)
     {

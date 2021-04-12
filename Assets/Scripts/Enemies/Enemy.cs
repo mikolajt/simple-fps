@@ -40,6 +40,11 @@ public abstract class Enemy : MonoBehaviour
     private int _attackHash = Animator.StringToHash("Attack");
     private int _deathHash = Animator.StringToHash("Death");
 
+    [SerializeField]
+    private GameObject _ammoPowerUp;
+    [SerializeField]
+    private GameObject _healthPowerUp;
+
     void Start()
     {
         _enemyNavMeshAgent = GetComponent<NavMeshAgent>();
@@ -65,6 +70,7 @@ public abstract class Enemy : MonoBehaviour
 
     private void Kill()
     {
+        SpawnPowerUp(transform.position);
         Destroy(gameObject);
     }
 
@@ -164,6 +170,22 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
+    private void SpawnPowerUp(Vector3 actualPosition)
+    {
+        int random = Random.Range(0, 2);
+        Vector3 spawnPoint = new Vector3(actualPosition.x, actualPosition.y + 1, actualPosition.z);
+
+        if (random == 0)
+        {
+            SpawnAmmo(_ammoPowerUp, spawnPoint);
+        }
+        else if (random == 1)
+        {
+            Instantiate(_healthPowerUp, spawnPoint, Quaternion.Euler(-90, 0, 0));
+        }
+    }
+
     protected abstract void Attack();
 
+    protected abstract void SpawnAmmo(GameObject ammoPowerUP, Vector3 spawnPoint);
 }

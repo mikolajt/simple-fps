@@ -4,9 +4,11 @@ public class AssaultRifle : Gun
 {
     private float _time;
 
-    public AssaultRifle(float damage, float ammunition, Animator animator) : base(damage, ammunition, animator)
+    public AssaultRifle(float damage, int ammunition, Animator animator) : base(damage, ammunition, animator)
     {
         _time = 0f;
+
+        Type = WeaponTypeEnum.AssaultRifle;
     }
 
     public override void Shoot(GameObject bulletPrefab, GameObject bulletSpawn, float shootingFrequency)

@@ -53,7 +53,14 @@ public class Grenade : MonoBehaviour
             }
             if (collider.gameObject.layer == 8)
             {
-                collider.GetComponent<Health>().actualHealth -= damage;
+                if (collider.gameObject.GetComponent<Health>().GetArmor() > 0)
+                {
+                    collider.gameObject.GetComponent<Health>().SubstractArmor(damage);
+                }
+                else
+                {
+                    collider.gameObject.GetComponent<Health>().SubstractHealth(damage);
+                }
             }
         }
 

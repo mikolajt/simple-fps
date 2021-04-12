@@ -3026,8 +3026,7 @@ MonoBehaviour:
   _arenaLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  _playerGameObject: {fileID: 4660912335468440389, guid: 888052d204f271744ac14a0913cee447,
-    type: 3}
+  playerGameObject: {fileID: 0}
   _sightRange: 15
   _attackRange: 2
   _moveSpeed: 1
@@ -3035,6 +3034,10 @@ MonoBehaviour:
   _attackSpeed: 3
   _damage: 10
   health: 100
+  _ammoPowerUp: {fileID: 5058063853951099775, guid: 03ec572f9c352f048a7816734832e0a2,
+    type: 3}
+  _healthPowerUp: {fileID: 6084657861568639611, guid: 12b2aa910d80d4843874f65e258e682b,
+    type: 3}
 --- !u!195 &-1395918755318609210
 NavMeshAgent:
   m_ObjectHideFlags: 0

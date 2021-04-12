@@ -23,6 +23,10 @@ public class Movement : MonoBehaviour
 
     private int _moveSpeedHash = Animator.StringToHash("MoveSpeed");
 
+    private float _speedBoost = 1f;
+    [SerializeField]
+    private float _speedBoostTime = 0f;
+
 
     void Start()
     {
@@ -46,12 +50,14 @@ public class Movement : MonoBehaviour
 
         Move();
         Rotate();
+
+        CheckSpeedBoostTime();
     }
 
     private void Move()
     {
-        _horizontalVelocity = transform.right * _speed * _horizontalInput;
-        _verticalVelocity = transform.forward * _speed * _verticalInput;
+        _horizontalVelocity = transform.right * _speed * _horizontalInput * _speedBoost;
+        _verticalVelocity = transform.forward * _speed * _verticalInput * _speedBoost;
 
         _playerRigidbody.velocity = _verticalVelocity + _horizontalVelocity;
 
@@ -94,5 +100,20 @@ public class Movement : MonoBehaviour
     {
         _mouseX = Input.GetAxis("Mouse X");
         _mouseY = Input.GetAxis("Mouse Y");
+    }
+
+    public void SetSpeedBoost(float boost, float time)
+    {
+        _speedBoost = boost;
+        _speedBoostTime = time;
+    }
+
+    private void CheckSpeedBoostTime()
+    {
+        _speedBoostTime -= Time.deltaTime;
+        if(_speedBoostTime <= 0)
+        {
+            _speedBoost = 1f;
+        }
     }
 }

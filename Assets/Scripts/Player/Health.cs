@@ -6,12 +6,13 @@ public class Health : MonoBehaviour
 {
     [SerializeField]
     private float _maxHealth = 100f;
+    private float _actualHealth;
 
-    public float actualHealth;
+    private float _armor = 0f;
 
     void Start()
     {
-        actualHealth = _maxHealth;
+        _actualHealth = _maxHealth;
     }
 
     void Update()
@@ -21,9 +22,41 @@ public class Health : MonoBehaviour
 
     private void CheckIfAlive()
     {
-        if (actualHealth <= 0)
+        if (_actualHealth <= 0)
         {
             Destroy(gameObject);
+        }
+    }
+
+    public void AddHealth(float health)
+    {
+        _actualHealth += health;
+        if(_actualHealth > _maxHealth)
+        {
+            _actualHealth = _maxHealth;
+        }
+    }
+
+    public void SubstractHealth(float health)
+    {
+        _actualHealth -= health;
+    }
+
+    public void SetArmor(float armor)
+    {
+        _armor = armor;
+    }
+
+    public float GetArmor()
+    {
+        return _armor;
+    }
+    public void SubstractArmor(float armor)
+    {
+        _armor -= armor;
+        if(_armor < 0)
+        {
+            _armor = 0f;
         }
     }
 }

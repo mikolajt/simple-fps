@@ -2051,8 +2051,7 @@ MonoBehaviour:
   _arenaLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  _playerGameObject: {fileID: 4660912335468440389, guid: 888052d204f271744ac14a0913cee447,
-    type: 3}
+  playerGameObject: {fileID: 0}
   _sightRange: 15
   _attackRange: 7
   _moveSpeed: 1
@@ -2060,6 +2059,10 @@ MonoBehaviour:
   _attackSpeed: 5
   _damage: 50
   health: 100
+  _ammoPowerUp: {fileID: 740752914335448750, guid: 745d7da98c609a644af80a97cb457d84,
+    type: 3}
+  _healthPowerUp: {fileID: 6084657861568639611, guid: 12b2aa910d80d4843874f65e258e682b,
+    type: 3}
   _grenadePrefab: {fileID: 7651148109177635312, guid: daeafd7493b347d4892554bf0c3a4230,
     type: 3}
   _grenadeSpawn: {fileID: 3930308994712466555}
