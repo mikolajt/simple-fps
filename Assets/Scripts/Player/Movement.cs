@@ -27,17 +27,17 @@ public class Movement : MonoBehaviour
     [SerializeField]
     private float _speedBoostTime = 0f;
 
+    private AudioSource _audioSource;
+
 
     void Start()
     {
         _playerRigidbody = GetComponent<Rigidbody>();
+        _audioSource = GetComponent<AudioSource>();
 
         _handgunAnimator = transform.GetChild(0).GetComponent<Animator>();
         _assaultRifleAnimator = transform.GetChild(1).GetComponent<Animator>();
         _granadeThrowerAnimator = transform.GetChild(2).GetComponent<Animator>();
-
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.lockState = CursorLockMode.None;
     }
 
     void Update()
@@ -64,6 +64,15 @@ public class Movement : MonoBehaviour
         _handgunAnimator.SetFloat(_moveSpeedHash, _horizontalInput * _speed + _verticalInput * _speed);
         _assaultRifleAnimator.SetFloat(_moveSpeedHash, _horizontalInput * _speed + _verticalInput * _speed);
         _granadeThrowerAnimator.SetFloat(_moveSpeedHash, _horizontalInput * _speed + _verticalInput * _speed);
+
+        if (!_audioSource.isPlaying && _playerRigidbody.velocity != Vector3.zero)
+        {
+            _audioSource.Play();
+        }
+        else if (_audioSource.isPlaying && _playerRigidbody.velocity == Vector3.zero)
+        {
+            _audioSource.Pause();
+        }
     }
 
     private void Rotate()

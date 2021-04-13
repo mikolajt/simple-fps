@@ -14,8 +14,10 @@ public class Grenade : MonoBehaviour
 
     [SerializeField]
     private GameObject _explosionEffect;
+
     void Start()
     {
+
         _explosionCountdown = _delayExplosion;
     }
     void Update()
@@ -24,6 +26,7 @@ public class Grenade : MonoBehaviour
 
         if(_explosionCountdown <= 0f)
         {
+
             Explode();
         }
     }
@@ -72,7 +75,6 @@ public class Grenade : MonoBehaviour
                 }
             }
         }
-
         Destroy(gameObject);
     }
 }

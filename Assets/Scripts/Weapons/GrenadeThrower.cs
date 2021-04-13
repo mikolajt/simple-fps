@@ -4,7 +4,7 @@ public class GrenadeThrower : Gun
     private float _throwForce;
     private float _time;
 
-    public GrenadeThrower(float damage, float throwForce, int ammunition, Animator animator) : base(damage, ammunition, animator)
+    public GrenadeThrower(float damage, float throwForce, int ammunition, Animator animator, AudioSource audioSource) : base(damage, ammunition, animator, audioSource)
     {
         _throwForce = throwForce;
         _time = 0f;
@@ -20,6 +20,7 @@ public class GrenadeThrower : Gun
             ThrowGrenade(grenadePrefab, grenadeSpawn);
             _ammunition--;
 
+            _audioSource.Play();
             _animator.SetTrigger(_shootHash);
         }
         else if (Input.GetKeyDown(KeyCode.Mouse0) && _time > 0 || !Input.GetKeyDown(KeyCode.Mouse0) && _time > 0)

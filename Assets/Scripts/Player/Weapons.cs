@@ -38,6 +38,10 @@ public class Weapons : MonoBehaviour
     private Animator _handgunAnimator;
     private Animator _grenadeAnimator;
 
+    private AudioSource _assaultRifleAudioSource;
+    private AudioSource _handgunAudioSource;
+    private AudioSource _grenadeAudioSource;
+
     [SerializeField]
     private GameObject _ammoUI;
     [SerializeField]
@@ -49,9 +53,13 @@ public class Weapons : MonoBehaviour
         _assaultRifleAnimator = transform.GetChild(1).GetComponent<Animator>();
         _grenadeAnimator = transform.GetChild(2).GetComponent<Animator>();
 
-        _handgun = new Handgun(_handgunDamage, _handgunBulletAmount, _handgunAnimator);
-        _assaultRifle = new AssaultRifle(_assaultRifleDamage, _assaultRifleBulletAmount, _assaultRifleAnimator);
-        _grenadeThrower = new GrenadeThrower(_grenadeDamage, _grenadeThrowForce, _grenadeAmount, _grenadeAnimator);
+        _handgunAudioSource = transform.GetChild(0).GetComponent<AudioSource>();
+        _assaultRifleAudioSource = transform.GetChild(1).GetComponent<AudioSource>();
+        _grenadeAudioSource = transform.GetChild(2).GetComponent<AudioSource>();
+
+        _handgun = new Handgun(_handgunDamage, _handgunBulletAmount, _handgunAnimator, _handgunAudioSource);
+        _assaultRifle = new AssaultRifle(_assaultRifleDamage, _assaultRifleBulletAmount, _assaultRifleAnimator, _assaultRifleAudioSource);
+        _grenadeThrower = new GrenadeThrower(_grenadeDamage, _grenadeThrowForce, _grenadeAmount, _grenadeAnimator, _grenadeAudioSource);
 
         _weapons[0].SetActive(true);
         _weapons[1].SetActive(false);

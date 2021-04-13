@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Handgun : Gun
 {
-    public Handgun(float damage, int ammunition, Animator animator) : base(damage, ammunition, animator)
+    public Handgun(float damage, int ammunition, Animator animator, AudioSource audioSource) : base(damage, ammunition, animator, audioSource)
     {
         Type = WeaponTypeEnum.Handgun;
     }
@@ -13,6 +13,7 @@ public class Handgun : Gun
             GenerateBulllet(bulletPrefab, bulletSpawn);
             _ammunition--;
 
+            _audioSource.Play();
             _animator.SetTrigger(_shootHash);
         }
     }

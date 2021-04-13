@@ -45,10 +45,13 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField]
     private GameObject _healthPowerUp;
 
+    private AudioSource[] _audioSources;
+
     void Start()
     {
         _enemyNavMeshAgent = GetComponent<NavMeshAgent>();
         _enemyAnimator = GetComponent<Animator>();
+        _audioSources = GetComponents<AudioSource>();
 
         _enemyNavMeshAgent.speed = _moveSpeed;
     }
@@ -114,11 +117,13 @@ public abstract class Enemy : MonoBehaviour
 
             Vector3 distanceToPatrolPoint = transform.position - _patrolPoint;
             _enemyAnimator.SetBool(_isMovingHash, true);
+            PlayWalkingSound();
 
             if(distanceToPatrolPoint.magnitude < 1f)
             {
                 _isPatrolPoinSet = false;
                 _enemyAnimator.SetBool(_isMovingHash, false);
+                PauseWalkingSound();
             }
         }
     }
@@ -140,11 +145,13 @@ public abstract class Enemy : MonoBehaviour
     {
         _enemyNavMeshAgent.SetDestination(playerGameObject.transform.position);
         _enemyAnimator.SetBool(_isMovingHash, true);
+        PlayWalkingSound();
     }
 
     private void AttackPlayer()
     {
         _enemyAnimator.SetBool(_isMovingHash, false);
+        PauseWalkingSound();
         _enemyNavMeshAgent.SetDestination(transform.position);
 
         Vector3 lookTarget = new Vector3(playerGameObject.transform.position.x, transform.position.y, playerGameObject.transform.position.z);
@@ -153,6 +160,7 @@ public abstract class Enemy : MonoBehaviour
         if(_timeToNextAttack <= 0f)
         {
             _enemyAnimator.SetTrigger(_attackHash);
+            _audioSources[0].Play();
 
             _timeToNextAttack += Time.deltaTime;
         }
@@ -182,6 +190,22 @@ public abstract class Enemy : MonoBehaviour
         else if (random == 1)
         {
             Instantiate(_healthPowerUp, spawnPoint, Quaternion.Euler(-90, 0, 0));
+        }
+    }
+
+    private void PlayWalkingSound()
+    {
+        if (!_audioSources[1].isPlaying)
+        {
+            _audioSources[1].Play();
+        }
+    }
+
+    private void PauseWalkingSound()
+    {
+        if (_audioSources[1].isPlaying)
+        {
+            _audioSources[1].Pause();
         }
     }
 

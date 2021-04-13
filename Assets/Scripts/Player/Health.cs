@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -36,7 +37,7 @@ public class Health : MonoBehaviour
     {
         if (_actualHealth <= 0)
         {
-            Destroy(gameObject);
+            SceneManager.LoadScene("GameOver");
         }
     }
 
@@ -94,7 +95,7 @@ public class Health : MonoBehaviour
     public void SubstractArmor(float armor)
     {
         _currentArmor -= armor;
-        if(_currentArmor < 0)
+        if(_currentArmor <= 0)
         {
             _currentArmor = 0f;
             _armor = 0f;

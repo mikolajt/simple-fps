@@ -8,18 +8,22 @@ public abstract class Gun
     protected Animator _animator;
     protected int _shootHash;
 
+    protected AudioSource _audioSource;
+
     private float _damageBoost = 1f;
     private float _damageBoostTime = 0f;
 
     public WeaponTypeEnum Type { get; protected set; }
 
-    public Gun(float damage, int ammunition, Animator animator)
+    public Gun(float damage, int ammunition, Animator animator, AudioSource audioSource)
     {
         _damage = damage;
         _ammunition = ammunition;
 
         _animator = animator;
         _shootHash = Animator.StringToHash("Shoot");
+
+        _audioSource = audioSource;
     }
 
     public abstract void Shoot(GameObject projectilePrefab, GameObject projectileSpawn, float shootingFrequency);
