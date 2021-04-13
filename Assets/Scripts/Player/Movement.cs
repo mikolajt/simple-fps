@@ -37,6 +37,9 @@ public class Movement : MonoBehaviour
         _handgunAnimator = transform.GetChild(0).GetComponent<Animator>();
         _assaultRifleAnimator = transform.GetChild(1).GetComponent<Animator>();
         _granadeThrowerAnimator = transform.GetChild(2).GetComponent<Animator>();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     void Update()

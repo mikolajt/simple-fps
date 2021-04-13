@@ -10,7 +10,6 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField]
     private LayerMask _arenaLayerMask;
 
-    [SerializeField]
     public GameObject playerGameObject;
 
     [SerializeField]
