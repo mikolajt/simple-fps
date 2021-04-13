@@ -1485,12 +1485,12 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   playerGameObject: {fileID: 0}
-  _sightRange: 15
-  _attackRange: 10
-  _moveSpeed: 1
-  _patrolRange: 20
+  _sightRange: 25
+  _attackRange: 20
+  _moveSpeed: 8
+  _patrolRange: 40
   _attackSpeed: 1
-  _damage: 20
+  _damage: 15
   health: 100
   _ammoPowerUp: {fileID: 6099550904591740434, guid: e0c3b394be23b254a8ba02a92f978fd4,
     type: 3}
@@ -1572,7 +1572,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 21
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -1607,7 +1607,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1668,7 +1668,7 @@ AudioSource:
   Priority: 200
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 25
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -1703,7 +1703,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

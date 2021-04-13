@@ -108,14 +108,17 @@ MonoBehaviour:
   _handgunDamage: 30
   _assaultRifleDamage: 20
   _grenadeDamage: 50
-  _grenadeThrowForce: 20
+  _grenadeThrowForce: 15
   _handgunBulletAmount: 30
   _assaultRifleBulletAmount: 50
   _grenadeAmount: 5
   _assaultRifleShootingFrequency: 0.1
   _grenadeThrowingFrequency: 2
   _ammoUI: {fileID: 0}
-  _weaponsImages: []
+  _weaponsImages:
+  - {fileID: 21300000, guid: d6e4dc2ab496ac845a119b14c5abbb91, type: 3}
+  - {fileID: 21300000, guid: 364206cb355dcf7479b2cdec20b8ec68, type: 3}
+  - {fileID: 21300000, guid: b3e76a068a948184aa9a5ffe4d7c5fed, type: 3}
 --- !u!114 &4660912335468440399
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2054,10 +2054,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   playerGameObject: {fileID: 0}
-  _sightRange: 15
-  _attackRange: 7
-  _moveSpeed: 1
-  _patrolRange: 15
+  _sightRange: 20
+  _attackRange: 15
+  _moveSpeed: 10
+  _patrolRange: 30
   _attackSpeed: 5
   _damage: 50
   health: 100
@@ -2068,7 +2068,7 @@ MonoBehaviour:
   _grenadePrefab: {fileID: 7651148109177635312, guid: daeafd7493b347d4892554bf0c3a4230,
     type: 3}
   _grenadeSpawn: {fileID: 3930308994712466555}
-  _throwForce: 20
+  _throwForce: 10
 --- !u!136 &516986514011652634
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2142,7 +2142,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 16
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -2177,7 +2177,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2238,7 +2238,7 @@ AudioSource:
   Priority: 200
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 20
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -2273,7 +2273,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

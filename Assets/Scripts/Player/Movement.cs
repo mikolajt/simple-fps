@@ -24,7 +24,6 @@ public class Movement : MonoBehaviour
     private int _moveSpeedHash = Animator.StringToHash("MoveSpeed");
 
     private float _speedBoost = 1f;
-    [SerializeField]
     private float _speedBoostTime = 0f;
 
     private AudioSource _audioSource;

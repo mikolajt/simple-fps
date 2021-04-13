@@ -9,7 +9,6 @@ public class Health : MonoBehaviour
     private float _actualHealth;
 
     public float _armor = 0f;
-    [SerializeField]
     private float _currentArmor;
 
     [SerializeField]

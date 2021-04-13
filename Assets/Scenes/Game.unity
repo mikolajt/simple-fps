@@ -816,7 +816,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 316877104}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.6, z: -50.7}
+  m_LocalPosition: {x: 0, y: 4.6, z: -50.295753}
   m_LocalScale: {x: 100, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 212203706}
@@ -1718,7 +1718,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 722199616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.6, z: 48.7}
+  m_LocalPosition: {x: 0, y: 4.6, z: 50.704247}
   m_LocalScale: {x: 100, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 212203706}
@@ -2083,7 +2083,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 894908262}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -49.1, y: 4.6, z: 0}
+  m_LocalPosition: {x: -50.467274, y: 4.6, z: 0}
   m_LocalScale: {x: 101, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 212203706}
@@ -3292,7 +3292,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: 5f8166df00dc42a47b5969769fb95d6d, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 65292a3d2d62b7840b390f1d9e40415e, type: 2}
 --- !u!4 &1763958058
 Transform:
   m_ObjectHideFlags: 0
@@ -3766,29 +3766,6 @@ PrefabInstance:
       propertyPath: _ammoUI
       value: 
       objectReference: {fileID: 1668138187}
-    - target: {fileID: 4660912335468440398, guid: 888052d204f271744ac14a0913cee447,
-        type: 3}
-      propertyPath: _weaponsImages.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4660912335468440398, guid: 888052d204f271744ac14a0913cee447,
-        type: 3}
-      propertyPath: _weaponsImages.Array.data[0]
-      value: 
-      objectReference: {fileID: 21300000, guid: d6e4dc2ab496ac845a119b14c5abbb91,
-        type: 3}
-    - target: {fileID: 4660912335468440398, guid: 888052d204f271744ac14a0913cee447,
-        type: 3}
-      propertyPath: _weaponsImages.Array.data[1]
-      value: 
-      objectReference: {fileID: 21300000, guid: 364206cb355dcf7479b2cdec20b8ec68,
-        type: 3}
-    - target: {fileID: 4660912335468440398, guid: 888052d204f271744ac14a0913cee447,
-        type: 3}
-      propertyPath: _weaponsImages.Array.data[2]
-      value: 
-      objectReference: {fileID: 21300000, guid: b3e76a068a948184aa9a5ffe4d7c5fed,
-        type: 3}
     - target: {fileID: 4660912335468440399, guid: 888052d204f271744ac14a0913cee447,
         type: 3}
       propertyPath: _armorUI
@@ -3838,7 +3815,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2006835471}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 49.5, y: 4.6, z: 0}
+  m_LocalPosition: {x: 50.532726, y: 4.6, z: 0}
   m_LocalScale: {x: 101, y: 10, z: 1}
   m_Children: []
   m_Father: {fileID: 212203706}

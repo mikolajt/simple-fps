@@ -111,7 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _amount: 50
   _lifetime: 30
-  _upgradeTime: 30
+  _upgradeTime: 0
 --- !u!114 &-2040529830063658877
 MonoBehaviour:
   m_ObjectHideFlags: 0

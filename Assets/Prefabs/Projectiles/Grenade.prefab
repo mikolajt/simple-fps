@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _delayExplosion: 3
-  _explosionRadius: 3
+  _explosionRadius: 8
   damage: 0
   isFromGrenadier: 0
   _explosionEffect: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
