@@ -15,6 +15,7 @@ public class Movement : MonoBehaviour
     private Vector3 _verticalVelocity;
     private float _mouseX;
     private float _mouseY;
+    private Vector3 _actualRotation;
     private Vector3 _playerRotation;
 
     private Animator _assaultRifleAnimator;
@@ -51,9 +52,13 @@ public class Movement : MonoBehaviour
         GetMouseInput();
 
         Move();
-        Rotate();
 
         CheckSpeedBoostTime();
+    }
+
+    private void LateUpdate()
+    {
+        Rotate();
     }
 
     private void Move()
@@ -79,22 +84,18 @@ public class Movement : MonoBehaviour
 
     private void Rotate()
     {
-        _playerRotation = transform.rotation.eulerAngles;
+        _actualRotation = transform.rotation.eulerAngles;
 
-        _playerRotation.x -= _mouseY * _rotationSensivity;
-        _playerRotation.y += _mouseX * _rotationSensivity;
-        _playerRotation.z = 0;
+        _playerRotation.x = Mathf.Lerp(_playerRotation.x, -_mouseY, _rotationSensivity * Time.deltaTime);
+        _playerRotation.y = Mathf.Lerp(_playerRotation.y, _mouseX, _rotationSensivity * Time.deltaTime);
+        _playerRotation.z = transform.eulerAngles.z;
 
-        if (_playerRotation.x > 90 && _playerRotation.x < 180)
+        _actualRotation += _playerRotation;
+
+        if (!(_actualRotation.x > 75 && _actualRotation.x < 285))
         {
-            _playerRotation.x = 90;
-        }
-        else if(_playerRotation.x > 180 && _playerRotation.x < 270)
-        {
-            _playerRotation.x = 270;
-        }
-
-        _playerRigidbody.rotation = Quaternion.Euler(_playerRotation);
+           transform.Rotate(_playerRotation.x, _playerRotation.y, -_playerRotation.z);
+        } 
     }
 
     private void GetHorizontalInput()
